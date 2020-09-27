@@ -3,4 +3,5 @@
 # Blue Cloud Project - SIGAD
 Projeto para desenvolver o SIGAD com as especificações do e-ARQ Brasil
 
-
+# Arquitetura de referência
+![arquitetura](https://user-images.githubusercontent.com/12190767/94368423-52eb4700-00ba-11eb-9358-9b2aec513e4b.png)
