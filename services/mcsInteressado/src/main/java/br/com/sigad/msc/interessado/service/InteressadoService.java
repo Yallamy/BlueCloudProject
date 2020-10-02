@@ -43,6 +43,16 @@ public interface InteressadoService {
 	public Interessado retrieve(Long id) throws SigadException;
 	
 	/**
+	 * Método que recupera um interessado pelo CPF/CNPJ.
+	 * @param cpfCnpj - CPF/CNPJ do interessado
+	 * @return Interessado
+	 * @throws SigadException
+	 * @author Yallamy Nascimento (yallamy@gmail.com)
+	 * @since 2 de out. de 2020
+	 */
+	public Interessado retrieve(String cpfCnpj) throws SigadException;
+	
+	/**
 	 * Método que deleta um interessado.
 	 * @param interessado - interessado a ser deletado
 	 * @throws SigadException

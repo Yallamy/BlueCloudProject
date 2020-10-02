@@ -29,7 +29,7 @@ public enum TipoDocumentoEnum {
 	 * @author Yallamy Nascimento (yallamy@gmail.com)
 	 * @since 1 de out. de 2020
 	 */
-	public static TipoDocumentoEnum obterStatus(String tipoDocumento) {
+	public static TipoDocumentoEnum obterTipoDocumento(String tipoDocumento) {
 		
 		return Arrays.asList(values()).stream().filter(
 				tr -> tr.tipoDocumento.equals(tipoDocumento)).findFirst().orElse(null);

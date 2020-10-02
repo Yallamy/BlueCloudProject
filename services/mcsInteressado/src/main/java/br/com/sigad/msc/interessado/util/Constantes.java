@@ -17,7 +17,7 @@ public class Constantes {
     public static final String PATH_SWAGGER = "/docs";
     
     //interessado resource
-    public static final String PATH_PESSOA = PATH_RAIZ + "/interessado";
+    public static final String PATH_INTERESSADO = PATH_RAIZ + "/interessado";
     
     
 	//Swagger
@@ -33,7 +33,7 @@ public class Constantes {
     
     public static final String RETRIEVE_INTERESSADO = "Recuperar um interessado";
     
-    public static final String RETRIEVEINTERESSADO_NOTES = "Recupera um interessado.";
+    public static final String RETRIEVE_INTERESSADO_NOTES = "Recupera um interessado.";
     
     public static final String DELETE_INTERESSADO = "Deletar um interessado";
     
@@ -71,5 +71,20 @@ public class Constantes {
   	public static final String INTERESSADO_RESPONSE_TELEFONE = "Armazena o telefone do interessado";
   	
   	public static final String INTERESSADO_RESPONSE_SITUACAO = "Armazena a situação do interessado";
+  	
+  	
+  	public static final String INTERESSADO_FILTRO_DTO = "Armazena os dados do filtro do interessado";
+  	
+  	public static final String INTERESSADO_FILTRO_NOME = "Armazena o nome do interessado";
+  	
+  	public static final String INTERESSADO_FILTRO_CPF_CNPJ = "Armazena o CPF/CNPJ do interessado";
+  	
+  	public static final String INTERESSADO_FILTRO_TIPO_DOCUMENTO = "Armazena o tipo de documento do interessado";
+  	
+  	public static final String INTERESSADO_FILTRO_EMAIL = "Armazena o e-mail do interessado";
+  	
+  	public static final String INTERESSADO_FILTRO_TELEFONE = "Armazena o telefone do interessado";
+  	
+  	public static final String INTERESSADO_FILTRO_SITUACAO = "Armazena a situação do interessado";
     
 }

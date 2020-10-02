@@ -80,6 +80,17 @@ public class InteressadoServiceImpl implements InteressadoService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	/*
+	 * 
+	 * (non-Javadoc)
+	 * @see @see br.com.sigad.msc.interessado.service.InteressadoService#retrieve(java.lang.String)
+	 */
+	@Override
+	public Interessado retrieve(String cpfCnpj) throws SigadException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	/*
 	 * 
