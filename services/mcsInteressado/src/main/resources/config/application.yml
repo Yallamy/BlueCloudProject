@@ -1,0 +1,35 @@
+server.error.whitelabel.enabled: true
+server:
+    port: 8080
+    connection-timeout: 30000
+apiConfig:                                                     
+    request:
+        timeout: 30000
+    rest:
+        connectionTimeout: 10000
+        readTimeout: 10000
+    failsafe:
+        failureRateThreshold: 10
+        waitDurationInOpenState: 1000
+        slidingWindowSize: 2             
+        timeoutDuration: 5
+        
+logging:
+    file: interessadoApi.log
+
+info:
+    app:
+        name: Interessado API
+        description: Microservice Interessado
+        version: @project.version@
+        profile: desenvolvimento
+
+swagger:
+    title: Interessado API
+    description: Microservice Interessado
+    version: @project.version@
+    termsOfServiceUrl:
+    contact:
+    license: Apache 2.0
+    licenseUrl: http://www.apache.org/licenses/LICENSE-2.0.html
+    protocol: http
