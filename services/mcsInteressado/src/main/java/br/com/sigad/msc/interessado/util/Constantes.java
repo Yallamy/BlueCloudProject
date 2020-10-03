@@ -51,6 +51,8 @@ public class Constantes {
   	
   	public static final String INTERESSADO_REQUEST_CPF_CNPJ = "Armazena o CPF/CNPJ do interessado";
   	
+  	public static final String INTERESSADO_REQUEST_TIPO_DOCUMENTO = "Armazena o tipo de documento do interessado";
+  	
   	public static final String INTERESSADO_REQUEST_EMAIL = "Armazena o e-mail do interessado";
   	
   	public static final String INTERESSADO_REQUEST_TELEFONE = "Armazena o telefone do interessado";

@@ -9,11 +9,13 @@ import org.springframework.http.HttpStatus;
  */
 public enum ServiceValidacao implements GenericValidacao{
 
-	INTERESSADO_NAO_ENCONTRADO("Interessado não encontrado", HttpStatus.NOT_FOUND),
-	HISTORICO_NAO_ENCONTRADO("Historico não encontrado", HttpStatus.NOT_FOUND),
 	BAD_REQUEST("Campos obrigatórios não informados", HttpStatus.BAD_REQUEST),
-	CPF_CNPJ_INVALIDO("O CPF/CNPJ informado é inválido", HttpStatus.BAD_REQUEST),
+	INTERESSADO_NAO_ENCONTRADO("Interessado não encontrado", HttpStatus.NOT_FOUND),
+	INTERESSADO_INATIVO("Interessado inativo", HttpStatus.BAD_REQUEST),
+	CPF_INVALIDO("O CPF informado é inválido", HttpStatus.BAD_REQUEST),
+	CNPJ_INVALIDO("O CNPJ informado é inválido", HttpStatus.BAD_REQUEST),
 	EMAIL_INVALIDO("O Email informado é inválido", HttpStatus.BAD_REQUEST),
+	TELEFONE_INVALIDO("O telefone informado é inválido", HttpStatus.BAD_REQUEST),
 	CPF_CNPJ_JA_CADASTRADO("O CPF/CNPJ informado já está cadastrado", HttpStatus.BAD_REQUEST);
 	
 	private String codigoErro;

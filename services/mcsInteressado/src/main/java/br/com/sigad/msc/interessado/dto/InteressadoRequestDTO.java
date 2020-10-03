@@ -34,9 +34,13 @@ public class InteressadoRequestDTO implements Serializable {
 	@NotEmpty(message = Mensagem.CPF_CNPJ_REQUIRED)
 	private String cpfCnpj;
 	
-	@ApiModelProperty(value = Constantes.INTERESSADO_REQUEST_EMAIL, position = 3)
+	@ApiModelProperty(value = Constantes.INTERESSADO_REQUEST_TIPO_DOCUMENTO, position = 3)
+	@NotEmpty(message = Mensagem.TIPO_DOCUMENTO_REQUIRED)
+	private String tipoDocumento;
+	
+	@ApiModelProperty(value = Constantes.INTERESSADO_REQUEST_EMAIL, position = 4)
 	private String email;
 	
-	@ApiModelProperty(value = Constantes.INTERESSADO_REQUEST_TELEFONE, position = 4)
+	@ApiModelProperty(value = Constantes.INTERESSADO_REQUEST_TELEFONE, position = 5)
 	private String telefone;
 }

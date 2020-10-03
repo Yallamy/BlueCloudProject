@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.sigad.msc.interessado.dto.InteressadoFiltroDTO;
 import br.com.sigad.msc.interessado.dto.InteressadoRequestDTO;
 import br.com.sigad.msc.interessado.dto.InteressadoResponseDTO;
+import br.com.sigad.msc.interessado.entity.HistoricoInteressado;
 import br.com.sigad.msc.interessado.entity.Interessado;
 import br.com.sigad.msc.interessado.enums.StatusEnum;
 import br.com.sigad.msc.interessado.enums.TipoDocumentoEnum;
@@ -58,6 +59,7 @@ public class InteressadoResource {
 			@Valid @RequestBody InteressadoRequestDTO interessadoRequestDTO) throws SigadException {
 
 		Interessado interessado = Util.convertModelMapper(interessadoRequestDTO, Interessado.class);
+		interessado.setTipoDocumento(TipoDocumentoEnum.obterTipoDocumento(interessadoRequestDTO.getTipoDocumento()));
 
 		interessado = this.service.create(interessado);
 		InteressadoResponseDTO response = Util.convertModelMapper(interessado, InteressadoResponseDTO.class);
@@ -175,6 +177,29 @@ public class InteressadoResource {
 
 		return ResponseEntity.ok(response);
 	}
+	
+	/**
+	 * Método REST que lista o histórico do interessado.
+	 * @param id - id do interessado
+	 * @return ResponseEntity<?> - lista de histórico ou código de erro HTTP
+	 * @author Yallamy Nascimento (yallamy@gmail.com)
+	 * @throws SigadException 
+	 * @since 2 de out. de 2020
+	 */
+	@RequestMapping(value = "/{id}/historico", method = RequestMethod.GET)
+	@ApiOperation(value = Constantes.LIST_INTERESSADO, 
+	notes = Constantes.LIST_INTERESSADO_NOTES, response = HistoricoInteressado.class)
+	public @ResponseBody ResponseEntity<Page<?>> listHistoric(
+			@PageableDefault(value = 30, sort = {"id"}, direction = Sort.Direction.ASC) 
+			Pageable pageable, @PathVariable("id") Long id) throws SigadException {
 
+		Interessado interessado = Interessado.builder().id(id).build();
+
+		Page<HistoricoInteressado> response = this.service.listHistoric(interessado, pageable);
+		
+		//FIXME - transformar para um Page de DTO
+
+		return ResponseEntity.ok(response);
+	}
 
 }

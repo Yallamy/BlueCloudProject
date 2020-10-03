@@ -1,5 +1,7 @@
 package br.com.sigad.msc.interessado.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -7,12 +9,15 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.google.gson.annotations.Expose;
 
 import br.com.sigad.msc.interessado.enums.StatusEnum;
@@ -59,7 +64,8 @@ public class Interessado {
 	@Expose
 	private String cpfCnpj;
 	
-	@Column(name = "tipoDocumento")
+	@Column(name = "tipoDocumento", nullable = false)
+	@NotNull(message = Mensagem.TIPO_DOCUMENTO_REQUIRED)
 	@Enumerated(EnumType.STRING)
 	@Expose
 	private TipoDocumentoEnum tipoDocumento;
@@ -72,9 +78,14 @@ public class Interessado {
 	@Expose
 	private String telefone;
 	
-	@Column(name = "situacao")
+	@Column(name = "situacao", nullable = false)
+	@NotNull(message = Mensagem.SITUACAO_REQUIRED)
 	@Enumerated(EnumType.STRING)
 	@Expose
 	private StatusEnum situacao;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "interessado")
+	private List<HistoricoInteressado> historico;
 
 }
