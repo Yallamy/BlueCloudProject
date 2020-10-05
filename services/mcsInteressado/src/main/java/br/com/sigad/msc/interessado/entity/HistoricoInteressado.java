@@ -63,8 +63,8 @@ public class HistoricoInteressado {
 	@Expose
 	private TipoHistoricoEnum tipoHistorico;
 	
-	@Column(name = "dadosAnterior", length = 3000)
-	private String dadosAnterior;
+	@Column(name = "dadosJson", length = 3000)
+	private String dadosJson;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="idInteressado", nullable = false)

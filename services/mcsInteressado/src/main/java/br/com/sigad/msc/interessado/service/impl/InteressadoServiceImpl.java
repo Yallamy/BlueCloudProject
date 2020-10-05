@@ -80,6 +80,7 @@ public class InteressadoServiceImpl implements InteressadoService {
 			throw new SigadException(ServiceValidacao.BAD_REQUEST);
 		}
 		
+		interessado.setSituacao(StatusEnum.ATIVO);
 		Set<ConstraintViolation<Interessado>> violations = validator.validate(interessado);
 		
 		if(violations.size() > BigDecimal.ZERO.intValue()) {
@@ -96,12 +97,12 @@ public class InteressadoServiceImpl implements InteressadoService {
 		}
 		
 		//salvando
-		interessado.setSituacao(StatusEnum.ATIVO);
 		Interessado interessadoSalvo = repository.save(interessado);
 		
 		HistoricoInteressado historico = HistoricoInteressado.builder()
 				.dtAlteracao(Calendar.getInstance().getTime())
 				.tipoHistorico(TipoHistoricoEnum.CREATE)
+				.dadosJson(gson.toJson(interessadoSalvo))
 				.interessado(interessadoSalvo)
 				.build();
 		
@@ -161,7 +162,7 @@ public class InteressadoServiceImpl implements InteressadoService {
 		HistoricoInteressado historico = HistoricoInteressado.builder()
 				.dtAlteracao(Calendar.getInstance().getTime())
 				.tipoHistorico(TipoHistoricoEnum.UPDATE)
-				.dadosAnterior(gson.toJson(registroAnterior))
+				.dadosJson(gson.toJson(interessado))
 				.interessado(interessado)
 				.build();
 		
@@ -240,15 +241,15 @@ public class InteressadoServiceImpl implements InteressadoService {
 		}
 		
 		//salvando
+		interessadoSalvo.setSituacao(StatusEnum.INATIVO);
 		String dadosJson = gson.toJson(interessadoSalvo);
 		
 		log.info("Deletando o interessado: " + dadosJson);
-		interessadoSalvo.setSituacao(StatusEnum.INATIVO);
 		
 		HistoricoInteressado historico = HistoricoInteressado.builder()
 				.dtAlteracao(Calendar.getInstance().getTime())
 				.tipoHistorico(TipoHistoricoEnum.DELETE)
-				.dadosAnterior(gson.toJson(dadosJson))
+				.dadosJson(gson.toJson(dadosJson))
 				.interessado(interessado)
 				.build();
 		

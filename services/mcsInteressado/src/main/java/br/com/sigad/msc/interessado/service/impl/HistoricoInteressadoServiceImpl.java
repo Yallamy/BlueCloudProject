@@ -24,7 +24,6 @@ import br.com.sigad.msc.interessado.exception.SigadException;
 import br.com.sigad.msc.interessado.repository.HistoricoInteressadoRepository;
 import br.com.sigad.msc.interessado.service.HistoricoInteressadoService;
 import br.com.twsoftware.alfred.object.Objeto;
-import lombok.extern.slf4j.Slf4j;
 
 /**
  * Classe que implementa os métodos do serviço para manter o histórico do interessado.
@@ -33,7 +32,6 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Service
 @Transactional
-@Slf4j
 public class HistoricoInteressadoServiceImpl implements HistoricoInteressadoService {
 	
 	@Autowired
