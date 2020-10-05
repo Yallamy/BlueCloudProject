@@ -42,8 +42,7 @@ View
 
 Tech | Descrição | Situação | 
 |-|-|-|
-| 
-| View | Adição da camada de View com Angular | Não iniciado | 
+| View | Adição da camada de View com Angular | - | 
 | Docker | Adição do Docker | - | 
 | JSON Web Token | Comunicação com as APIs | - |
 | Segurança | Adição de segurança na view | - |
