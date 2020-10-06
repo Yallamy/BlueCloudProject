@@ -88,5 +88,16 @@ public class Constantes {
   	public static final String INTERESSADO_FILTRO_TELEFONE = "Armazena o telefone do interessado";
   	
   	public static final String INTERESSADO_FILTRO_SITUACAO = "Armazena a situação do interessado";
+  	
+  	
+	public static final String HISTORICO_RESPONSE_DTO = "Armazena os dados do response do histórico do interessado";
+  	
+  	public static final String HISTORICO_RESPONSE_ID = "Armazena o id do histórico";
+  	
+  	public static final String HISTORICO_RESPONSE_DATA_ALTERACAO = "Armazena a data de alteração do histórico";
+  	
+  	public static final String HISTORICO_RESPONSE_TIPO = "Armazena o tipo do histórico";
+  	
+  	public static final String HISTORICO_RESPONSE_DADOS = "Armazena os dados do interessado em formato JSON";
     
 }

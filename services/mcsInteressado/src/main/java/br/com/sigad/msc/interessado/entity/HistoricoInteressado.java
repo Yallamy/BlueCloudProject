@@ -11,7 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.DynamicInsert;
@@ -59,7 +58,7 @@ public class HistoricoInteressado {
 	private Date dtAlteracao;
 	
 	@Column(name = "tipoHistorico", nullable = false, length = 30)
-	@NotEmpty(message = Mensagem.TIPO_HISTORICO_REQUIRED)
+	@NotNull(message = Mensagem.TIPO_HISTORICO_REQUIRED)
 	@Expose
 	private TipoHistoricoEnum tipoHistorico;
 	

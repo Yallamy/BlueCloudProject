@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.sigad.msc.interessado.dto.HistoricoResponseDTO;
 import br.com.sigad.msc.interessado.dto.InteressadoFiltroDTO;
 import br.com.sigad.msc.interessado.dto.InteressadoRequestDTO;
 import br.com.sigad.msc.interessado.dto.InteressadoResponseDTO;
@@ -171,9 +172,8 @@ public class InteressadoResource {
 		interessado.setTipoDocumento(TipoDocumentoEnum.obterTipoDocumento(interessadoFiltroDTO.getTipoDocumento()));
 		interessado.setSituacao(StatusEnum.obterStatus(interessadoFiltroDTO.getSituacao()));
 
-		Page<Interessado> response = this.service.list(interessado, pageable);
-		
-		//FIXME - transformar para um Page de DTO
+		Page<Interessado> page = this.service.list(interessado, pageable);
+		Page<InteressadoRequestDTO> response = Util.convertModelMapperToPage(page, InteressadoRequestDTO.class);
 
 		return ResponseEntity.ok(response);
 	}
@@ -188,16 +188,15 @@ public class InteressadoResource {
 	 */
 	@RequestMapping(value = "/{id}/historico", method = RequestMethod.GET)
 	@ApiOperation(value = Constantes.LIST_INTERESSADO, 
-	notes = Constantes.LIST_INTERESSADO_NOTES, response = HistoricoInteressado.class)
+	notes = Constantes.LIST_INTERESSADO_NOTES, response = HistoricoResponseDTO.class)
 	public @ResponseBody ResponseEntity<Page<?>> listHistoric(
 			@PageableDefault(value = 30, sort = {"id"}, direction = Sort.Direction.ASC) 
 			Pageable pageable, @PathVariable("id") Long id) throws SigadException {
 
 		Interessado interessado = Interessado.builder().id(id).build();
 
-		Page<HistoricoInteressado> response = this.service.listHistoric(interessado, pageable);
-		
-		//FIXME - transformar para um Page de DTO
+		Page<HistoricoInteressado> page = this.service.listHistoric(interessado, pageable);
+		Page<HistoricoResponseDTO> response = Util.convertModelMapperToPage(page, HistoricoResponseDTO.class);
 
 		return ResponseEntity.ok(response);
 	}
