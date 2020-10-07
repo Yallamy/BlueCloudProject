@@ -2,6 +2,7 @@ package br.com.sigad.msc.interessado.util;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
@@ -83,6 +84,20 @@ public class Util {
 		}
 
 		return model;
+	}
+	
+	/**
+	 * Método que valida se um valor informado é um telefone válido.
+	 * @param telefone
+	 * @return boolean - true é válido. False é inválido
+	 * @author Yallamy Nascimento (yallamy@gmail.com)
+	 * @since 7 de out. de 2020
+	 */
+	public static boolean telefoneIsValido(String telefone) {
+		
+		final String foneRegEx = "^([0-9]{11})|([0-9]{10})$";
+		Pattern fonePattern = Pattern.compile(foneRegEx);
+		return fonePattern.matcher(telefone).matches();
 	}
 
 }

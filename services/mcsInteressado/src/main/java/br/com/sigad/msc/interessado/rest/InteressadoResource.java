@@ -29,6 +29,7 @@ import br.com.sigad.msc.interessado.exception.SigadException;
 import br.com.sigad.msc.interessado.service.InteressadoService;
 import br.com.sigad.msc.interessado.util.Constantes;
 import br.com.sigad.msc.interessado.util.Util;
+import br.com.twsoftware.alfred.object.Objeto;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
@@ -169,9 +170,12 @@ public class InteressadoResource {
 			@RequestBody InteressadoFiltroDTO interessadoFiltroDTO) throws SigadException {
 
 		Interessado interessado = Util.convertModelMapper(interessadoFiltroDTO, Interessado.class);
-		interessado.setTipoDocumento(TipoDocumentoEnum.obterTipoDocumento(interessadoFiltroDTO.getTipoDocumento()));
-		interessado.setSituacao(StatusEnum.obterStatus(interessadoFiltroDTO.getSituacao()));
-
+		
+		if(Objeto.notBlank(interessadoFiltroDTO)) {
+			interessado.setTipoDocumento(TipoDocumentoEnum.obterTipoDocumento(interessadoFiltroDTO.getTipoDocumento()));
+			interessado.setSituacao(StatusEnum.obterStatus(interessadoFiltroDTO.getSituacao()));
+		}
+		
 		Page<Interessado> page = this.service.list(interessado, pageable);
 		Page<InteressadoRequestDTO> response = Util.convertModelMapperToPage(page, InteressadoRequestDTO.class);
 

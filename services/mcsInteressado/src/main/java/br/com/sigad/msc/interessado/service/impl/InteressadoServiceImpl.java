@@ -32,11 +32,11 @@ import br.com.sigad.msc.interessado.exception.SigadException;
 import br.com.sigad.msc.interessado.repository.InteressadoRepository;
 import br.com.sigad.msc.interessado.service.HistoricoInteressadoService;
 import br.com.sigad.msc.interessado.service.InteressadoService;
+import br.com.sigad.msc.interessado.util.Util;
 import br.com.twsoftware.alfred.cnpj.CNPJ;
 import br.com.twsoftware.alfred.cpf.CPF;
 import br.com.twsoftware.alfred.email.Email;
 import br.com.twsoftware.alfred.object.Objeto;
-import br.com.twsoftware.alfred.telefones.Telefones;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -126,6 +126,7 @@ public class InteressadoServiceImpl implements InteressadoService {
 			throw new SigadException(ServiceValidacao.BAD_REQUEST);
 		}
 
+		interessado.setSituacao(StatusEnum.ATIVO);
 		Set<ConstraintViolation<Interessado>> violations = validator.validate(interessado);
 
 		if(violations.size() > BigDecimal.ZERO.intValue()
@@ -319,7 +320,7 @@ public class InteressadoServiceImpl implements InteressadoService {
 		}
 		
 		if(Objeto.notBlank(interessado.getTelefone()) 
-				&& !Telefones.isValido(interessado.getTelefone())) {
+				&& !Util.telefoneIsValido(interessado.getTelefone())) {
 			
 			throw new SigadException(ServiceValidacao.TELEFONE_INVALIDO);
 		}
