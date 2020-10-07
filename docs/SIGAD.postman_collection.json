@@ -1,0 +1,236 @@
+{
+	"info": {
+		"_postman_id": "99c6b615-fa29-4d15-911c-5ad01fb4f564",
+		"name": "SIGAD",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "MCS_Interessado",
+			"item": [
+				{
+					"name": "Criar_interessado",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Dom Pedro I\",\r\n    \"cpfCnpj\": \"63334342212\",\r\n    \"tipoDocumento\": \"CPF\",\r\n    \"email\": \"dompedro@gmail.com\",\r\n    \"telefone\": \"83999887777\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/sigad/interessado/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"sigad",
+								"interessado",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Alterar_interessado",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Dom Pedro II\",\r\n    \"cpfCnpj\": \"63334342212\",\r\n    \"tipoDocumento\": \"CPF\",\r\n    \"email\": \"dompedro@gmail.com\",\r\n    \"telefone\": \"83999887777\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/sigad/interessado/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"sigad",
+								"interessado",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Recuperar_interessado",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/sigad/interessado/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"sigad",
+								"interessado",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Recuperar_por_CPF_CNPJ",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/sigad/interessado/documento/63334342212",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"sigad",
+								"interessado",
+								"documento",
+								"63334342212"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar_interessado",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/sigad/interessado/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"sigad",
+								"interessado",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar_Interessado",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Dom Pedro I\",\r\n    \"cpfCnpj\": \"63334342212\",\r\n    \"tipoDocumento\": \"CPF\",\r\n    \"email\": \"dompedro@gmail.com\",\r\n    \"telefone\": \"83999887777\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/sigad/interessado/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"sigad",
+								"interessado",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar_Historico",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/sigad/interessado/1/historico",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"sigad",
+								"interessado",
+								"1",
+								"historico"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
