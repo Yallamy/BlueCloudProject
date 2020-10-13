@@ -95,6 +95,10 @@ public class Util {
 	 */
 	public static boolean telefoneIsValido(String telefone) {
 		
+		if(Objeto.isBlank(telefone)) {
+			return false;
+		}
+		
 		final String foneRegEx = "^([0-9]{11})|([0-9]{10})$";
 		Pattern fonePattern = Pattern.compile(foneRegEx);
 		return fonePattern.matcher(telefone).matches();

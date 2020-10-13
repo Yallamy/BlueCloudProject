@@ -19,6 +19,8 @@ public class Mensagem {
 	
 	public static final String TIPO_HISTORICO_REQUIRED = "O tipo de histórico é obrigatório";
 	
+	public static final String DADOS_HISTORICO_REQUIRED = "O dados do histórico é obrigatório";
+	
 	public static final String INTERESSADO_REQUIRED = "O campo interessado do histórico é obrigatório";
 	
 }

@@ -63,6 +63,7 @@ public class HistoricoInteressado {
 	private TipoHistoricoEnum tipoHistorico;
 	
 	@Column(name = "dadosJson", length = 3000)
+	@NotNull(message = Mensagem.DADOS_HISTORICO_REQUIRED)
 	private String dadosJson;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
