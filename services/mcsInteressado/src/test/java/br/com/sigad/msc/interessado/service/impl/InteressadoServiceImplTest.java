@@ -24,7 +24,6 @@ import br.com.sigad.msc.interessado.enums.StatusEnum;
 import br.com.sigad.msc.interessado.enums.TipoDocumentoEnum;
 import br.com.sigad.msc.interessado.exception.SigadException;
 import br.com.sigad.msc.interessado.repository.InteressadoRepository;
-import br.com.sigad.msc.interessado.service.HistoricoInteressadoService;
 
 
 /**
@@ -42,7 +41,7 @@ public class InteressadoServiceImplTest {
 	private InteressadoRepository repository;
 	
 	@Mock
-	private HistoricoInteressadoService historicoInteressadoService;
+	private HistoricoInteressadoServiceImpl historicoInteressadoService;
 	
 	@Mock
 	private Pageable pageable;
@@ -245,12 +244,21 @@ public class InteressadoServiceImplTest {
 	@Test()
 	public void updateInteressadoJaCadastradaTest() {
 		
-		this.interessadoResponse.setId(EntityGenericUtil.getLong());
+		Interessado interessadoResponse2 = Interessado.builder()
+				.id(EntityGenericUtil.getLong())
+				.nome(EntityGenericUtil.getString())
+				.cpfCnpj(EntityGenericUtil.getCPF())
+				.tipoDocumento(TipoDocumentoEnum.CPF)
+				.email(EntityGenericUtil.getEmail())
+				.telefone(EntityGenericUtil.getTelefone())
+				.situacao(StatusEnum.ATIVO)
+				.build();
+		
 		this.request.setId(EntityGenericUtil.getLong());
 		this.interessadoServiceImpl.init();
 		
 		Mockito.when(this.repository.findByCpfCnpj(
-				Mockito.any(String.class))).thenReturn(this.interessadoResponse);
+				Mockito.any(String.class))).thenReturn(interessadoResponse2);
 
 		assertThrows(SigadException.class, () -> {
 			this.interessadoServiceImpl.update(request);
@@ -670,6 +678,10 @@ public class InteressadoServiceImplTest {
 	
 	@Test
 	public void listHistoricPageableNullTest() {
+		
+		Mockito.when(this.historicoInteressadoService.list(
+				Mockito.any(Interessado.class), 
+				Mockito.any(Pageable.class))).thenThrow(SigadException.class);
 
 		assertThrows(SigadException.class, () -> {
 			this.interessadoServiceImpl.listHistoric(request, null);
